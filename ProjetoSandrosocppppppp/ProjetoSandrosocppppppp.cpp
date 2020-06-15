@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string.h>
 #include <stdbool.h>
+#include <ctype.h>
+#include <stdio.h>
 
 using namespace std; 
 
@@ -19,9 +21,24 @@ class  Agente {
 
         }
         
-        void Mover(int novox, int novoy) {
-            x = novox;
-            y = novoy;
+        void Mover(char mover, int m, int n){
+            mover = toupper(mover);
+
+            if(!(x-1 <= 0 && mover == 'A') && !(x-1 >= n-1 && mover == 'D') && !(y-1 <= 0 && mover == 'W') && !(y-1 >= m-1 && mover == 'S'))
+            {
+                if (mover == 'A') {
+                    x--;
+                }
+                if (mover == 'S') {
+                    y++;
+                }
+                if (mover == 'D') {
+                    x++;
+                }
+                if (mover == 'W') {
+                    y--;
+                }
+            }
         }
 
         void Decidir(int decisao) {
@@ -35,6 +52,7 @@ class  Agente {
         int GetX() {
             return x;
         }
+
         int GetY() {
             return y;
         }
@@ -44,12 +62,22 @@ class Mundo : public Agente {
    
     int M = NULL;
     int N = NULL;
+
     public:
         Mundo(int posM, int posN) {
             M = posM;
             N = posN;
         }
+
         Mundo() {
+        }
+
+        int GetM() {
+            return M;
+        }
+
+        int GetN() {
+            return N;
         }
 
         void Imprimir() {
@@ -68,7 +96,6 @@ class Mundo : public Agente {
                 cout << "\n";
             }
         }
-  
 };
 
 class Walls : public Agente {
@@ -79,17 +106,20 @@ class Walls : public Agente {
 int main(int argc, char *argv[])
 {
     
-    Mundo* teste = new Mundo(14,19);
+    Mundo* mundo = new Mundo(14,19);
+    Walls* walls = new Walls();
     bool continuar = true;
-    teste->Imprimir();
+    char mover;
 
-    //do {
-    //    
+    do {
+        mundo->Imprimir();
+        mover=getchar();
+        mundo->Mover(mover, mundo->GetM(), mundo->GetN());
 
+        system("cls");
+    } while (continuar);
 
-    //} while (continuar);
-
-    //cout << teste->estado;
+    //cout << mundo->estado;
     system("pause");
 }
 

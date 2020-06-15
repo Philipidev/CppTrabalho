@@ -2,44 +2,94 @@
 //
 
 #include <iostream>
+#include <string.h>
+#include <stdbool.h>
 
 using namespace std; 
 
-class Agente {
-public:
-    int x = 0;
-    virtual int teste() = 0;
+class  Agente {
+    int x = 4;
+    int y = 3;
+    int estado = 1;
+
+    public:
+        void Inicializar(int paramx, int paramy) {
+            x = paramx;
+            y = paramy;
+
+        }
+        
+        void Mover(int novox, int novoy) {
+            x = novox;
+            y = novoy;
+        }
+
+        void Decidir(int decisao) {
+            estado = decisao;
+        }
+
+        void Executar() {
+
+        }
+
+        int GetX() {
+            return x;
+        }
+        int GetY() {
+            return y;
+        }
 };
 
 class Mundo : public Agente {
    
-    //x = 2;
-public:
-    int teste() {
-        cout << "teste" <<endl;
-        return 1;
-    }
-    
+    int M = NULL;
+    int N = NULL;
+    public:
+        Mundo(int posM, int posN) {
+            M = posM;
+            N = posN;
+        }
+        Mundo() {
+        }
+
+        void Imprimir() {
+            int posx = GetX()-1;
+            int posy = GetY()-1;
+            for (int i = 0; i < M; i++) {
+                for (int i2 = 0; i2 < N; i2++) {
+                    if (posy == i && posx == i2) {
+                        cout << "1";
+                    }
+                    else {
+                        cout << "0";
+                    }
+                    cout << " ";
+                }
+                cout << "\n";
+            }
+        }
+  
 };
+
+class Walls : public Agente {
+
+};
+
 
 int main(int argc, char *argv[])
 {
-    Agente *mundo = new Mundo();
-
-    int x = 0;
-
-    cout << mundo->teste();
     
+    Mundo* teste = new Mundo(14,19);
+    bool continuar = true;
+    teste->Imprimir();
+
+    //do {
+    //    
+
+
+    //} while (continuar);
+
+    //cout << teste->estado;
     system("pause");
 }
 
-// Executar programa: Ctrl + F5 ou Menu Depurar > Iniciar Sem Depuração
-// Depurar programa: F5 ou menu Depurar > Iniciar Depuração
-
-// Dicas para Começar: 
-//   1. Use a janela do Gerenciador de Soluções para adicionar/gerenciar arquivos
-//   2. Use a janela do Team Explorer para conectar-se ao controle do código-fonte
-//   3. Use a janela de Saída para ver mensagens de saída do build e outras mensagens
-//   4. Use a janela Lista de Erros para exibir erros
-//   5. Ir Para o Projeto > Adicionar Novo Item para criar novos arquivos de código, ou Projeto > Adicionar Item Existente para adicionar arquivos de código existentes ao projeto
-//   6. No futuro, para abrir este projeto novamente, vá para Arquivo > Abrir > Projeto e selecione o arquivo. sln

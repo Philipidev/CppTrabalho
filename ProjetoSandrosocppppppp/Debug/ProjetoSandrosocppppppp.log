@@ -1,2 +1,6 @@
 ﻿  ProjetoSandrosocppppppp.cpp
+C:\Users\phili\source\repos\ProjetoSandrosocppppppp\ProjetoSandrosocppppppp\ProjetoSandrosocppppppp.cpp(388,31): warning C4018: '<=': incompatibilidade de signed/unsigned
+C:\Users\phili\source\repos\ProjetoSandrosocppppppp\ProjetoSandrosocppppppp\ProjetoSandrosocppppppp.cpp(369,13): warning C4101: 'c': variável local não referenciada
+C:\Users\phili\source\repos\ProjetoSandrosocppppppp\ProjetoSandrosocppppppp\ProjetoSandrosocppppppp.cpp(499,31): warning C4018: '<=': incompatibilidade de signed/unsigned
+C:\Users\phili\source\repos\ProjetoSandrosocppppppp\ProjetoSandrosocppppppp\ProjetoSandrosocppppppp.cpp(487,13): warning C4101: 'c': variável local não referenciada
   ProjetoSandrosocppppppp.vcxproj -> C:\Users\phili\source\repos\ProjetoSandrosocppppppp\Debug\ProjetoSandrosocppppppp.exe
